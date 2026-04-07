@@ -8,9 +8,9 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - In-Memory Computing
   - Data Caching
   - Distributed Computing
+  - In-Memory Computing
   - Real-Time
 url: >-
   https://raw.githubusercontent.com/api-evangelist/hazelcast/refs/heads/main/apis.yml
@@ -27,8 +27,8 @@ apis:
     humanURL: https://docs.hazelcast.com/hazelcast/latest/rest/rest-api
     baseURL: https://localhost:5701/hazelcast/rest
     tags:
-      - In-Memory Computing
       - Distributed Computing
+      - In-Memory Computing
       - REST
     properties:
       - type: Documentation
