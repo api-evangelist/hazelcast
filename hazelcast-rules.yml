@@ -1,0 +1,24 @@
+aid: hazelcast
+name: Hazelcast REST API Rules
+description: >-
+  Governance and operational rules for the Hazelcast REST API exposed by
+  cluster members, covering data structure access, cluster management,
+  health probes, and configuration endpoints.
+specificationVersion: '0.1'
+rules:
+  - name: disabled-by-default
+    description: The REST service is disabled by default and must be explicitly enabled in member configuration.
+  - name: endpoint-groups
+    description: Access is gated by endpoint groups (CLUSTER_READ, CLUSTER_WRITE, DATA, HEALTH_CHECK, PERSISTENCE, WAN, CP).
+  - name: deployment-bound
+    description: Endpoints are only available against an operator-deployed Hazelcast cluster; there is no SaaS endpoint at this URL.
+  - name: rest-base-path
+    description: All non-health endpoints are namespaced under /hazelcast/rest.
+  - name: health-base-path
+    description: Liveness and readiness probes are namespaced under /hazelcast/health.
+  - name: authentication
+    description: Authentication is configurable per cluster (TLS, JAAS, client-side credentials) and not enforced by the REST layer alone.
+  - name: text-payloads
+    description: Map and queue endpoints accept and return plain text payloads by default.
+  - name: versioning
+    description: Track the latest Hazelcast documentation version; APIs evolve with Hazelcast releases.
