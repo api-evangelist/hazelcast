@@ -1,0 +1,13 @@
+{
+  "repo": "hazelcast",
+  "feeds": [
+    {
+      "source": "https://hazelcast.com/blog/",
+      "feed_url": "https://hazelcast.com/feed/",
+      "saved": 10,
+      "title": "Hazelcast"
+    }
+  ],
+  "post_count": 10,
+  "fetched": "2026-05-03T23:29:19Z"
+}
