@@ -59,6 +59,10 @@ common:
     url: https://github.com/hazelcast
   - type: Community
     url: https://slack.hazelcast.com/
+  - type: Integrations
+    url: https://hazelcast.com/partners/
+integrations:
+  - name: 'Let''s talk'
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
