@@ -38,7 +38,7 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.hazelcast.com/hazelcast/latest/maintain-cluster/rest-api
-      - type: Getting Started
+      - type: GettingStarted
         url: https://docs.hazelcast.com/hazelcast/latest/getting-started/get-started-docker
       - type: OpenAPI
         url: https://raw.githubusercontent.com/api-evangelist/hazelcast/refs/heads/main/openapi/hazelcast-openapi.yml
@@ -49,13 +49,13 @@ common:
     url: https://hazelcast.com/
   - type: Documentation
     url: https://docs.hazelcast.com/
-  - type: Getting Started
+  - type: GettingStarted
     url: https://docs.hazelcast.com/hazelcast/latest/getting-started/get-started-docker
   - type: Support
     url: https://hazelcast.com/support/
   - type: Blog
     url: https://hazelcast.com/blog/
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/hazelcast
   - type: Community
     url: https://slack.hazelcast.com/
