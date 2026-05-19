@@ -1,0 +1,188 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Hazelcast REST API — Cluster
+  description: 'Hazelcast REST API — Cluster. 5 operations. Lead operation: Get cluster info. Self-contained Naftiko capability
+    covering one Hazelcast business surface.'
+  tags:
+  - Hazelcast
+  - Cluster
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    HAZELCAST_API_KEY: HAZELCAST_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: hazelcast-cluster
+    baseUri: http://{host}:{port}
+    description: Hazelcast REST API — Cluster business capability. Self-contained, no shared references.
+    resources:
+    - name: hazelcast-rest-cluster
+      path: /hazelcast/rest/cluster
+      operations:
+      - name: getclusterinfo
+        method: GET
+        description: Get cluster info
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: hazelcast-rest-instance
+      path: /hazelcast/rest/instance
+      operations:
+      - name: getinstancename
+        method: GET
+        description: Get instance name
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: hazelcast-rest-management-cluster-state
+      path: /hazelcast/rest/management/cluster/state
+      operations:
+      - name: getclusterstate
+        method: GET
+        description: Get cluster state
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: changeclusterstate
+        method: POST
+        description: Change cluster state
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: hazelcast-rest-management-cluster-version
+      path: /hazelcast/rest/management/cluster/version
+      operations:
+      - name: getclusterversion
+        method: GET
+        description: Get cluster version
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: hazelcast-cluster-rest
+    port: 8080
+    description: REST adapter for Hazelcast REST API — Cluster. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/hazelcast/rest/cluster
+      name: hazelcast-rest-cluster
+      description: REST surface for hazelcast-rest-cluster.
+      operations:
+      - method: GET
+        name: getclusterinfo
+        description: Get cluster info
+        call: hazelcast-cluster.getclusterinfo
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/hazelcast/rest/instance
+      name: hazelcast-rest-instance
+      description: REST surface for hazelcast-rest-instance.
+      operations:
+      - method: GET
+        name: getinstancename
+        description: Get instance name
+        call: hazelcast-cluster.getinstancename
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/hazelcast/rest/management/cluster/state
+      name: hazelcast-rest-management-cluster-state
+      description: REST surface for hazelcast-rest-management-cluster-state.
+      operations:
+      - method: GET
+        name: getclusterstate
+        description: Get cluster state
+        call: hazelcast-cluster.getclusterstate
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: changeclusterstate
+        description: Change cluster state
+        call: hazelcast-cluster.changeclusterstate
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/hazelcast/rest/management/cluster/version
+      name: hazelcast-rest-management-cluster-version
+      description: REST surface for hazelcast-rest-management-cluster-version.
+      operations:
+      - method: GET
+        name: getclusterversion
+        description: Get cluster version
+        call: hazelcast-cluster.getclusterversion
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: hazelcast-cluster-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Hazelcast REST API — Cluster. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-cluster-info
+      description: Get cluster info
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: hazelcast-cluster.getclusterinfo
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-instance-name
+      description: Get instance name
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: hazelcast-cluster.getinstancename
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-cluster-state
+      description: Get cluster state
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: hazelcast-cluster.getclusterstate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: change-cluster-state
+      description: Change cluster state
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: hazelcast-cluster.changeclusterstate
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-cluster-version
+      description: Get cluster version
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: hazelcast-cluster.getclusterversion
+      outputParameters:
+      - type: object
+        mapping: $.

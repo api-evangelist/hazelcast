@@ -1,0 +1,210 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Hazelcast REST API — Maps
+  description: 'Hazelcast REST API — Maps. 4 operations. Lead operation: Clear map. Self-contained Naftiko capability covering
+    one Hazelcast business surface.'
+  tags:
+  - Hazelcast
+  - Maps
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    HAZELCAST_API_KEY: HAZELCAST_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: hazelcast-maps
+    baseUri: http://{host}:{port}
+    description: Hazelcast REST API — Maps business capability. Self-contained, no shared references.
+    resources:
+    - name: hazelcast-rest-maps-mapName
+      path: /hazelcast/rest/maps/{mapName}
+      operations:
+      - name: clearmap
+        method: DELETE
+        description: Clear map
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: mapName
+          in: path
+          type: string
+          required: true
+    - name: hazelcast-rest-maps-mapName-key
+      path: /hazelcast/rest/maps/{mapName}/{key}
+      operations:
+      - name: getmapentry
+        method: GET
+        description: Get map entry
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: mapName
+          in: path
+          type: string
+          required: true
+        - name: key
+          in: path
+          type: string
+          required: true
+      - name: putmapentry
+        method: POST
+        description: Put map entry
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: mapName
+          in: path
+          type: string
+          required: true
+        - name: key
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletemapentry
+        method: DELETE
+        description: Delete map entry
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: mapName
+          in: path
+          type: string
+          required: true
+        - name: key
+          in: path
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: hazelcast-maps-rest
+    port: 8080
+    description: REST adapter for Hazelcast REST API — Maps. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/hazelcast/rest/maps/{mapname}
+      name: hazelcast-rest-maps-mapname
+      description: REST surface for hazelcast-rest-maps-mapName.
+      operations:
+      - method: DELETE
+        name: clearmap
+        description: Clear map
+        call: hazelcast-maps.clearmap
+        with:
+          mapName: rest.mapName
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/hazelcast/rest/maps/{mapname}/{key}
+      name: hazelcast-rest-maps-mapname-key
+      description: REST surface for hazelcast-rest-maps-mapName-key.
+      operations:
+      - method: GET
+        name: getmapentry
+        description: Get map entry
+        call: hazelcast-maps.getmapentry
+        with:
+          mapName: rest.mapName
+          key: rest.key
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: putmapentry
+        description: Put map entry
+        call: hazelcast-maps.putmapentry
+        with:
+          mapName: rest.mapName
+          key: rest.key
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletemapentry
+        description: Delete map entry
+        call: hazelcast-maps.deletemapentry
+        with:
+          mapName: rest.mapName
+          key: rest.key
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: hazelcast-maps-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Hazelcast REST API — Maps. One tool per consumed operation, routed inline through this capability's
+      consumes block.
+    tools:
+    - name: clear-map
+      description: Clear map
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: hazelcast-maps.clearmap
+      with:
+        mapName: tools.mapName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-map-entry
+      description: Get map entry
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: hazelcast-maps.getmapentry
+      with:
+        mapName: tools.mapName
+        key: tools.key
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: put-map-entry
+      description: Put map entry
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: hazelcast-maps.putmapentry
+      with:
+        mapName: tools.mapName
+        key: tools.key
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-map-entry
+      description: Delete map entry
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: hazelcast-maps.deletemapentry
+      with:
+        mapName: tools.mapName
+        key: tools.key
+      outputParameters:
+      - type: object
+        mapping: $.

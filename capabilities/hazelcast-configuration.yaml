@@ -1,0 +1,124 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Hazelcast REST API — Configuration
+  description: 'Hazelcast REST API — Configuration. 3 operations. Lead operation: Reload member configuration. Self-contained
+    Naftiko capability covering one Hazelcast business surface.'
+  tags:
+  - Hazelcast
+  - Configuration
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    HAZELCAST_API_KEY: HAZELCAST_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: hazelcast-configuration
+    baseUri: http://{host}:{port}
+    description: Hazelcast REST API — Configuration business capability. Self-contained, no shared references.
+    resources:
+    - name: hazelcast-rest-config-reload
+      path: /hazelcast/rest/config/reload
+      operations:
+      - name: reloadconfig
+        method: POST
+        description: Reload member configuration
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: hazelcast-rest-config-tcp-ip-member-list
+      path: /hazelcast/rest/config/tcp-ip/member-list
+      operations:
+      - name: gettcpipmemberlist
+        method: GET
+        description: Get TCP-IP member list
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatetcpipmemberlist
+        method: POST
+        description: Update TCP-IP member list
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: hazelcast-configuration-rest
+    port: 8080
+    description: REST adapter for Hazelcast REST API — Configuration. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/hazelcast/rest/config/reload
+      name: hazelcast-rest-config-reload
+      description: REST surface for hazelcast-rest-config-reload.
+      operations:
+      - method: POST
+        name: reloadconfig
+        description: Reload member configuration
+        call: hazelcast-configuration.reloadconfig
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/hazelcast/rest/config/tcp-ip/member-list
+      name: hazelcast-rest-config-tcp-ip-member-list
+      description: REST surface for hazelcast-rest-config-tcp-ip-member-list.
+      operations:
+      - method: GET
+        name: gettcpipmemberlist
+        description: Get TCP-IP member list
+        call: hazelcast-configuration.gettcpipmemberlist
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: updatetcpipmemberlist
+        description: Update TCP-IP member list
+        call: hazelcast-configuration.updatetcpipmemberlist
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: hazelcast-configuration-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Hazelcast REST API — Configuration. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: reload-member-configuration
+      description: Reload member configuration
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: hazelcast-configuration.reloadconfig
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-tcp-ip-member-list
+      description: Get TCP-IP member list
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: hazelcast-configuration.gettcpipmemberlist
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: update-tcp-ip-member-list
+      description: Update TCP-IP member list
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: hazelcast-configuration.updatetcpipmemberlist
+      outputParameters:
+      - type: object
+        mapping: $.
