@@ -1,0 +1,328 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hazelcast REST API",
+    "version": "latest"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Maps",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get map entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{host}:{port}/hazelcast/rest/maps/:mapName/:key",
+            "params": [
+              {
+                "name": "mapName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get map entry"
+        },
+        {
+          "info": {
+            "name": "Put map entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/hazelcast/rest/maps/:mapName/:key",
+            "params": [
+              {
+                "name": "mapName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Put map entry"
+        },
+        {
+          "info": {
+            "name": "Delete map entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{host}:{port}/hazelcast/rest/maps/:mapName/:key",
+            "params": [
+              {
+                "name": "mapName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete map entry"
+        },
+        {
+          "info": {
+            "name": "Clear map",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{host}:{port}/hazelcast/rest/maps/:mapName",
+            "params": [
+              {
+                "name": "mapName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Clear map"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Queues",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Offer item to queue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/hazelcast/rest/queues/:queueName",
+            "params": [
+              {
+                "name": "queueName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Offer item to queue"
+        },
+        {
+          "info": {
+            "name": "Poll item from queue",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{host}:{port}/hazelcast/rest/queues/:queueName",
+            "params": [
+              {
+                "name": "queueName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "timeout",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Poll item from queue"
+        },
+        {
+          "info": {
+            "name": "Get queue size",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{host}:{port}/hazelcast/rest/queues/:queueName/size",
+            "params": [
+              {
+                "name": "queueName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get queue size"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Cluster",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get cluster info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{host}:{port}/hazelcast/rest/cluster"
+          },
+          "docs": "Get cluster info"
+        },
+        {
+          "info": {
+            "name": "Get instance name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{host}:{port}/hazelcast/rest/instance"
+          },
+          "docs": "Get instance name"
+        },
+        {
+          "info": {
+            "name": "Get cluster state",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{host}:{port}/hazelcast/rest/management/cluster/state"
+          },
+          "docs": "Get cluster state"
+        },
+        {
+          "info": {
+            "name": "Change cluster state",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/hazelcast/rest/management/cluster/state"
+          },
+          "docs": "Change cluster state"
+        },
+        {
+          "info": {
+            "name": "Get cluster version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{host}:{port}/hazelcast/rest/management/cluster/version"
+          },
+          "docs": "Get cluster version"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Readiness probe",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{host}:{port}/hazelcast/health/ready"
+          },
+          "docs": "Readiness probe"
+        },
+        {
+          "info": {
+            "name": "Node state",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{host}:{port}/hazelcast/health/node-state"
+          },
+          "docs": "Node state"
+        },
+        {
+          "info": {
+            "name": "Cluster state health",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{host}:{port}/hazelcast/health/cluster-state"
+          },
+          "docs": "Cluster state health"
+        },
+        {
+          "info": {
+            "name": "Cluster safe",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{host}:{port}/hazelcast/health/cluster-safe"
+          },
+          "docs": "Cluster safe"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Configuration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Reload member configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/hazelcast/rest/config/reload"
+          },
+          "docs": "Reload member configuration"
+        },
+        {
+          "info": {
+            "name": "Get TCP-IP member list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{host}:{port}/hazelcast/rest/config/tcp-ip/member-list"
+          },
+          "docs": "Get TCP-IP member list"
+        },
+        {
+          "info": {
+            "name": "Update TCP-IP member list",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/hazelcast/rest/config/tcp-ip/member-list"
+          },
+          "docs": "Update TCP-IP member list"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
