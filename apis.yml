@@ -5,7 +5,7 @@ description: >-
   integration, and distributed computing. Hazelcast provides in-memory computing capabilities for high-performance,
   low-latency applications, exposing a REST API for managing maps, queues, cluster state, configuration, and health.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Data Caching
   - Distributed Computing
