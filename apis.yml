@@ -59,7 +59,7 @@ common:
     url: https://slack.hazelcast.com/
   - type: Integrations
     url: https://hazelcast.com/partners/
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://docs.hazelcast.com/llms.txt
 integrations:
   - name: Let's talk
