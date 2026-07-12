@@ -41,6 +41,8 @@ apis:
       - type: Rules
         url: https://raw.githubusercontent.com/api-evangelist/hazelcast/refs/heads/main/hazelcast-rules.yml
 common:
+  - type: DomainSecurity
+    url: security/hazelcast-domain-security.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/hazelcast
   - type: Website
