@@ -1,0 +1,49 @@
+openapi: 3.0.3
+info:
+  title: Hazelcast REST Cluster Configuration API
+  description: OpenAPI definition for the Hazelcast REST API exposed by cluster members. The REST service is disabled by default and must be enabled in member configuration. Endpoint groups (CLUSTER_READ, CLUSTER_WRITE, DATA, HEALTH_CHECK, PERSISTENCE, WAN, CP) gate access to specific operations.
+  version: latest
+  contact:
+    name: Hazelcast
+    url: https://hazelcast.com/
+  license:
+    name: Apache License 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://{host}:{port}
+  description: Hazelcast member host
+  variables:
+    host:
+      default: localhost
+    port:
+      default: '5701'
+tags:
+- name: Configuration
+  description: Runtime configuration management.
+paths:
+  /hazelcast/rest/config/reload:
+    post:
+      summary: Reload member configuration
+      operationId: reloadConfig
+      tags:
+      - Configuration
+      responses:
+        '200':
+          description: Configuration reload triggered.
+  /hazelcast/rest/config/tcp-ip/member-list:
+    get:
+      summary: Get TCP-IP member list
+      operationId: getTcpIpMemberList
+      tags:
+      - Configuration
+      responses:
+        '200':
+          description: Configured TCP-IP member list.
+    post:
+      summary: Update TCP-IP member list
+      operationId: updateTcpIpMemberList
+      tags:
+      - Configuration
+      responses:
+        '200':
+          description: Member list updated.

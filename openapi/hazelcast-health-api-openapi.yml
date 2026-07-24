@@ -1,0 +1,61 @@
+openapi: 3.0.3
+info:
+  title: Hazelcast REST Cluster Health API
+  description: OpenAPI definition for the Hazelcast REST API exposed by cluster members. The REST service is disabled by default and must be enabled in member configuration. Endpoint groups (CLUSTER_READ, CLUSTER_WRITE, DATA, HEALTH_CHECK, PERSISTENCE, WAN, CP) gate access to specific operations.
+  version: latest
+  contact:
+    name: Hazelcast
+    url: https://hazelcast.com/
+  license:
+    name: Apache License 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://{host}:{port}
+  description: Hazelcast member host
+  variables:
+    host:
+      default: localhost
+    port:
+      default: '5701'
+tags:
+- name: Health
+  description: Liveness and readiness checks.
+paths:
+  /hazelcast/health/ready:
+    get:
+      summary: Readiness probe
+      operationId: healthReady
+      tags:
+      - Health
+      responses:
+        '200':
+          description: Member is ready.
+        '503':
+          description: Member is not ready.
+  /hazelcast/health/node-state:
+    get:
+      summary: Node state
+      operationId: healthNodeState
+      tags:
+      - Health
+      responses:
+        '200':
+          description: Node lifecycle state.
+  /hazelcast/health/cluster-state:
+    get:
+      summary: Cluster state health
+      operationId: healthClusterState
+      tags:
+      - Health
+      responses:
+        '200':
+          description: Cluster state health value.
+  /hazelcast/health/cluster-safe:
+    get:
+      summary: Cluster safe
+      operationId: healthClusterSafe
+      tags:
+      - Health
+      responses:
+        '200':
+          description: Whether the cluster is safe.

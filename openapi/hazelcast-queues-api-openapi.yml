@@ -1,0 +1,87 @@
+openapi: 3.0.3
+info:
+  title: Hazelcast REST Cluster Queues API
+  description: OpenAPI definition for the Hazelcast REST API exposed by cluster members. The REST service is disabled by default and must be enabled in member configuration. Endpoint groups (CLUSTER_READ, CLUSTER_WRITE, DATA, HEALTH_CHECK, PERSISTENCE, WAN, CP) gate access to specific operations.
+  version: latest
+  contact:
+    name: Hazelcast
+    url: https://hazelcast.com/
+  license:
+    name: Apache License 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://{host}:{port}
+  description: Hazelcast member host
+  variables:
+    host:
+      default: localhost
+    port:
+      default: '5701'
+tags:
+- name: Queues
+  description: Distributed queue operations under /hazelcast/rest/queues.
+paths:
+  /hazelcast/rest/queues/{queueName}:
+    post:
+      summary: Offer item to queue
+      operationId: offerQueueItem
+      tags:
+      - Queues
+      parameters:
+      - name: queueName
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: Item enqueued.
+    delete:
+      summary: Poll item from queue
+      operationId: pollQueueItem
+      tags:
+      - Queues
+      parameters:
+      - name: queueName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: timeout
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+      responses:
+        '200':
+          description: Item polled.
+          content:
+            text/plain:
+              schema:
+                type: string
+  /hazelcast/rest/queues/{queueName}/size:
+    get:
+      summary: Get queue size
+      operationId: getQueueSize
+      tags:
+      - Queues
+      parameters:
+      - name: queueName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Number of items in the queue.
+          content:
+            text/plain:
+              schema:
+                type: integer

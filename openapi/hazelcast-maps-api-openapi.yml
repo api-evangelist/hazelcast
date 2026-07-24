@@ -1,0 +1,108 @@
+openapi: 3.0.3
+info:
+  title: Hazelcast REST Cluster Maps API
+  description: OpenAPI definition for the Hazelcast REST API exposed by cluster members. The REST service is disabled by default and must be enabled in member configuration. Endpoint groups (CLUSTER_READ, CLUSTER_WRITE, DATA, HEALTH_CHECK, PERSISTENCE, WAN, CP) gate access to specific operations.
+  version: latest
+  contact:
+    name: Hazelcast
+    url: https://hazelcast.com/
+  license:
+    name: Apache License 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://{host}:{port}
+  description: Hazelcast member host
+  variables:
+    host:
+      default: localhost
+    port:
+      default: '5701'
+tags:
+- name: Maps
+  description: Distributed map operations under /hazelcast/rest/maps.
+paths:
+  /hazelcast/rest/maps/{mapName}/{key}:
+    get:
+      summary: Get map entry
+      operationId: getMapEntry
+      tags:
+      - Maps
+      parameters:
+      - name: mapName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Value for the given key.
+          content:
+            text/plain:
+              schema:
+                type: string
+        '204':
+          description: Key not found.
+    post:
+      summary: Put map entry
+      operationId: putMapEntry
+      tags:
+      - Maps
+      parameters:
+      - name: mapName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: Entry stored.
+    delete:
+      summary: Delete map entry
+      operationId: deleteMapEntry
+      tags:
+      - Maps
+      parameters:
+      - name: mapName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: key
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Entry deleted.
+  /hazelcast/rest/maps/{mapName}:
+    delete:
+      summary: Clear map
+      operationId: clearMap
+      tags:
+      - Maps
+      parameters:
+      - name: mapName
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Map cleared.

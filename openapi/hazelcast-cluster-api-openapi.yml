@@ -1,0 +1,67 @@
+openapi: 3.0.3
+info:
+  title: Hazelcast REST Cluster API
+  description: OpenAPI definition for the Hazelcast REST API exposed by cluster members. The REST service is disabled by default and must be enabled in member configuration. Endpoint groups (CLUSTER_READ, CLUSTER_WRITE, DATA, HEALTH_CHECK, PERSISTENCE, WAN, CP) gate access to specific operations.
+  version: latest
+  contact:
+    name: Hazelcast
+    url: https://hazelcast.com/
+  license:
+    name: Apache License 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://{host}:{port}
+  description: Hazelcast member host
+  variables:
+    host:
+      default: localhost
+    port:
+      default: '5701'
+tags:
+- name: Cluster
+  description: Cluster information and management endpoints.
+paths:
+  /hazelcast/rest/cluster:
+    get:
+      summary: Get cluster info
+      operationId: getClusterInfo
+      tags:
+      - Cluster
+      responses:
+        '200':
+          description: Cluster member list and basic info.
+  /hazelcast/rest/instance:
+    get:
+      summary: Get instance name
+      operationId: getInstanceName
+      tags:
+      - Cluster
+      responses:
+        '200':
+          description: Hazelcast instance name.
+  /hazelcast/rest/management/cluster/state:
+    get:
+      summary: Get cluster state
+      operationId: getClusterState
+      tags:
+      - Cluster
+      responses:
+        '200':
+          description: Current cluster state (ACTIVE, FROZEN, NO_MIGRATION, PASSIVE).
+    post:
+      summary: Change cluster state
+      operationId: changeClusterState
+      tags:
+      - Cluster
+      responses:
+        '200':
+          description: New cluster state applied.
+  /hazelcast/rest/management/cluster/version:
+    get:
+      summary: Get cluster version
+      operationId: getClusterVersion
+      tags:
+      - Cluster
+      responses:
+        '200':
+          description: Cluster version string.
