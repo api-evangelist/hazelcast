@@ -1,0 +1,293 @@
+openapi: 3.0.3
+info:
+  title: Hazelcast REST API
+  description: >-
+    OpenAPI definition for the Hazelcast REST API exposed by cluster
+    members. The REST service is disabled by default and must be enabled
+    in member configuration. Endpoint groups (CLUSTER_READ, CLUSTER_WRITE,
+    DATA, HEALTH_CHECK, PERSISTENCE, WAN, CP) gate access to specific
+    operations.
+  version: latest
+  contact:
+    name: Hazelcast
+    url: https://hazelcast.com/
+  license:
+    name: Apache License 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+  - url: http://{host}:{port}
+    description: Hazelcast member host
+    variables:
+      host:
+        default: localhost
+      port:
+        default: '5701'
+tags:
+  - name: Maps
+    description: Distributed map operations under /hazelcast/rest/maps.
+  - name: Queues
+    description: Distributed queue operations under /hazelcast/rest/queues.
+  - name: Cluster
+    description: Cluster information and management endpoints.
+  - name: Health
+    description: Liveness and readiness checks.
+  - name: Configuration
+    description: Runtime configuration management.
+paths:
+  /hazelcast/rest/maps/{mapName}/{key}:
+    get:
+      summary: Get map entry
+      operationId: getMapEntry
+      tags:
+        - Maps
+      parameters:
+        - name: mapName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: key
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Value for the given key.
+          content:
+            text/plain:
+              schema:
+                type: string
+        '204':
+          description: Key not found.
+    post:
+      summary: Put map entry
+      operationId: putMapEntry
+      tags:
+        - Maps
+      parameters:
+        - name: mapName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: key
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: Entry stored.
+    delete:
+      summary: Delete map entry
+      operationId: deleteMapEntry
+      tags:
+        - Maps
+      parameters:
+        - name: mapName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: key
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Entry deleted.
+  /hazelcast/rest/maps/{mapName}:
+    delete:
+      summary: Clear map
+      operationId: clearMap
+      tags:
+        - Maps
+      parameters:
+        - name: mapName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Map cleared.
+  /hazelcast/rest/queues/{queueName}:
+    post:
+      summary: Offer item to queue
+      operationId: offerQueueItem
+      tags:
+        - Queues
+      parameters:
+        - name: queueName
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              type: string
+      responses:
+        '200':
+          description: Item enqueued.
+    delete:
+      summary: Poll item from queue
+      operationId: pollQueueItem
+      tags:
+        - Queues
+      parameters:
+        - name: queueName
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: timeout
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: Item polled.
+          content:
+            text/plain:
+              schema:
+                type: string
+  /hazelcast/rest/queues/{queueName}/size:
+    get:
+      summary: Get queue size
+      operationId: getQueueSize
+      tags:
+        - Queues
+      parameters:
+        - name: queueName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Number of items in the queue.
+          content:
+            text/plain:
+              schema:
+                type: integer
+  /hazelcast/rest/cluster:
+    get:
+      summary: Get cluster info
+      operationId: getClusterInfo
+      tags:
+        - Cluster
+      responses:
+        '200':
+          description: Cluster member list and basic info.
+  /hazelcast/rest/instance:
+    get:
+      summary: Get instance name
+      operationId: getInstanceName
+      tags:
+        - Cluster
+      responses:
+        '200':
+          description: Hazelcast instance name.
+  /hazelcast/rest/management/cluster/state:
+    get:
+      summary: Get cluster state
+      operationId: getClusterState
+      tags:
+        - Cluster
+      responses:
+        '200':
+          description: Current cluster state (ACTIVE, FROZEN, NO_MIGRATION, PASSIVE).
+    post:
+      summary: Change cluster state
+      operationId: changeClusterState
+      tags:
+        - Cluster
+      responses:
+        '200':
+          description: New cluster state applied.
+  /hazelcast/rest/management/cluster/version:
+    get:
+      summary: Get cluster version
+      operationId: getClusterVersion
+      tags:
+        - Cluster
+      responses:
+        '200':
+          description: Cluster version string.
+  /hazelcast/health/ready:
+    get:
+      summary: Readiness probe
+      operationId: healthReady
+      tags:
+        - Health
+      responses:
+        '200':
+          description: Member is ready.
+        '503':
+          description: Member is not ready.
+  /hazelcast/health/node-state:
+    get:
+      summary: Node state
+      operationId: healthNodeState
+      tags:
+        - Health
+      responses:
+        '200':
+          description: Node lifecycle state.
+  /hazelcast/health/cluster-state:
+    get:
+      summary: Cluster state health
+      operationId: healthClusterState
+      tags:
+        - Health
+      responses:
+        '200':
+          description: Cluster state health value.
+  /hazelcast/health/cluster-safe:
+    get:
+      summary: Cluster safe
+      operationId: healthClusterSafe
+      tags:
+        - Health
+      responses:
+        '200':
+          description: Whether the cluster is safe.
+  /hazelcast/rest/config/reload:
+    post:
+      summary: Reload member configuration
+      operationId: reloadConfig
+      tags:
+        - Configuration
+      responses:
+        '200':
+          description: Configuration reload triggered.
+  /hazelcast/rest/config/tcp-ip/member-list:
+    get:
+      summary: Get TCP-IP member list
+      operationId: getTcpIpMemberList
+      tags:
+        - Configuration
+      responses:
+        '200':
+          description: Configured TCP-IP member list.
+    post:
+      summary: Update TCP-IP member list
+      operationId: updateTcpIpMemberList
+      tags:
+        - Configuration
+      responses:
+        '200':
+          description: Member list updated.

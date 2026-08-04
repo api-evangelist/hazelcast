@@ -1,0 +1,22 @@
+{
+  "provider": "hazelcast",
+  "sources": [
+    "hazelcast-cluster-api-openapi.yml",
+    "hazelcast-configuration-api-openapi.yml",
+    "hazelcast-health-api-openapi.yml",
+    "hazelcast-maps-api-openapi.yml",
+    "hazelcast-queues-api-openapi.yml"
+  ],
+  "outputs": [
+    "hazelcast-cluster-api-openapi.yml",
+    "hazelcast-configuration-api-openapi.yml",
+    "hazelcast-health-api-openapi.yml",
+    "hazelcast-maps-api-openapi.yml",
+    "hazelcast-queues-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
