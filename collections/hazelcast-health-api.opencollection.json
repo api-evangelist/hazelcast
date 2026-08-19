@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hazelcast REST Cluster Health API",
+    "version": "latest"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Readiness probe",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{host}:{port}/hazelcast/health/ready"
+          },
+          "docs": "Readiness probe"
+        },
+        {
+          "info": {
+            "name": "Node state",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{host}:{port}/hazelcast/health/node-state"
+          },
+          "docs": "Node state"
+        },
+        {
+          "info": {
+            "name": "Cluster state health",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{host}:{port}/hazelcast/health/cluster-state"
+          },
+          "docs": "Cluster state health"
+        },
+        {
+          "info": {
+            "name": "Cluster safe",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{host}:{port}/hazelcast/health/cluster-safe"
+          },
+          "docs": "Cluster safe"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hazelcast REST Cluster Queues API",
+    "version": "latest"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Queues",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Offer item to queue",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/hazelcast/rest/queues/:queueName",
+            "params": [
+              {
+                "name": "queueName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Offer item to queue"
+        },
+        {
+          "info": {
+            "name": "Poll item from queue",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{host}:{port}/hazelcast/rest/queues/:queueName",
+            "params": [
+              {
+                "name": "queueName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "timeout",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Poll item from queue"
+        },
+        {
+          "info": {
+            "name": "Get queue size",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{host}:{port}/hazelcast/rest/queues/:queueName/size",
+            "params": [
+              {
+                "name": "queueName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get queue size"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

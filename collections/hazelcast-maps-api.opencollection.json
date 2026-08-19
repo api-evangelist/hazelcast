@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hazelcast REST Cluster Maps API",
+    "version": "latest"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Maps",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get map entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{host}:{port}/hazelcast/rest/maps/:mapName/:key",
+            "params": [
+              {
+                "name": "mapName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get map entry"
+        },
+        {
+          "info": {
+            "name": "Put map entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/hazelcast/rest/maps/:mapName/:key",
+            "params": [
+              {
+                "name": "mapName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Put map entry"
+        },
+        {
+          "info": {
+            "name": "Delete map entry",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{host}:{port}/hazelcast/rest/maps/:mapName/:key",
+            "params": [
+              {
+                "name": "mapName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "key",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete map entry"
+        },
+        {
+          "info": {
+            "name": "Clear map",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://{host}:{port}/hazelcast/rest/maps/:mapName",
+            "params": [
+              {
+                "name": "mapName",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Clear map"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

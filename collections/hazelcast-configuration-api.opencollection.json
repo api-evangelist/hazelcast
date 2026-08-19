@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hazelcast REST Cluster Configuration API",
+    "version": "latest"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Configuration",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Reload member configuration",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/hazelcast/rest/config/reload"
+          },
+          "docs": "Reload member configuration"
+        },
+        {
+          "info": {
+            "name": "Get TCP-IP member list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{host}:{port}/hazelcast/rest/config/tcp-ip/member-list"
+          },
+          "docs": "Get TCP-IP member list"
+        },
+        {
+          "info": {
+            "name": "Update TCP-IP member list",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/hazelcast/rest/config/tcp-ip/member-list"
+          },
+          "docs": "Update TCP-IP member list"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

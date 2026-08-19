@@ -1,0 +1,260 @@
+# Hazelcast Platform Documentation
+# Placed at: https://docs.hazelcast.com/llms.txt
+# Updated: 2025-11-14
+
+# Hazelcast Platform Documentation
+
+> Hazelcast is a unified real-time data platform combining stream processing with a fast data store for consistently low-latency querying, aggregation, and stateful computation against event streams and traditional data sources.
+
+Hazelcast enables you to build resource-efficient, real-time applications with distributed data structures, SQL querying, stream processing via Jet, and clustering capabilities. Deploy at any scale from edge devices to large cloud clusters.
+
+**Community Edition**: Open source under Apache 2.0 license with core in-memory data grid and stream processing features.  
+**Enterprise Edition**: Advanced features including CP Subsystem for strong consistency, WAN Replication, Security, Vector Search, High-Density Memory, and commercial support.
+
+Current version: 5.7
+
+> For AI tools with large context windows, see [llms-full.txt](/llms-full.txt) which contains all documentation in a single file.
+
+## Getting Started
+
+- [What is Hazelcast Platform?](https://docs.hazelcast.com/hazelcast/latest/): Platform overview, architecture, and key capabilities
+- [Install Community Edition](https://docs.hazelcast.com/hazelcast/latest/getting-started/install-hazelcast): Install using package manager, Docker, binary, or Maven
+- [Install Enterprise Edition](https://docs.hazelcast.com/hazelcast/latest/getting-started/install-enterprise): Enterprise installation with license key setup
+- [Quick Start with Docker](https://docs.hazelcast.com/hazelcast/latest/getting-started/get-started-docker): Start a local cluster in Docker in 5 minutes
+- [Quick Start with Java](https://docs.hazelcast.com/hazelcast/latest/getting-started/get-started-java): Embedded cluster tutorial for Java applications
+- [Quick Start with CLI](https://docs.hazelcast.com/hazelcast/latest/getting-started/get-started-cli): Install and use Hazelcast with package manager
+- [Hazelcast Editions](https://docs.hazelcast.com/hazelcast/latest/getting-started/editions): Compare Community vs Enterprise features and distributions
+- [Get Started with Enterprise](https://docs.hazelcast.com/hazelcast/latest/getting-started/get-started-enterprise): Tutorial for Enterprise Edition with persistence
+
+## Core Concepts
+
+- [Architecture Overview](https://docs.hazelcast.com/hazelcast/latest/architecture/architecture): How Hazelcast works under the hood
+- [Data Partitioning](https://docs.hazelcast.com/hazelcast/latest/architecture/data-partitioning): How data is distributed and replicated across members
+- [In-Memory Storage](https://docs.hazelcast.com/hazelcast/latest/architecture/in-memory-storage): Memory management and storage architecture
+- [Distributed Computing with Jet](https://docs.hazelcast.com/hazelcast/latest/architecture/distributed-computing): How Hazelcast models and executes stream processing jobs
+- [Event Time Processing](https://docs.hazelcast.com/hazelcast/latest/architecture/event-time-processing): Handling late events and watermarks in streams
+- [Creating Clusters](https://docs.hazelcast.com/hazelcast/latest/clusters/creating-clusters): Member discovery, cluster formation, and network configuration
+- [Discovery Mechanisms](https://docs.hazelcast.com/hazelcast/latest/clusters/discovery-mechanisms): Multicast, TCP, and cloud discovery options
+
+## Data Structures and Maps
+
+- [Distributed Data Structures](https://docs.hazelcast.com/hazelcast/latest/data-structures/distributed-data-structures): Overview of available data structures
+- [Distributed Map (IMap)](https://docs.hazelcast.com/hazelcast/latest/data-structures/map): Key-value distributed storage with partitioning and replication
+- [Creating Maps](https://docs.hazelcast.com/hazelcast/latest/data-structures/creating-a-map): How to create and initialize maps
+- [Configuring Maps](https://docs.hazelcast.com/hazelcast/latest/data-structures/map-config): Map configuration options including indexes, backups, and eviction
+- [Reading from Maps](https://docs.hazelcast.com/hazelcast/latest/data-structures/reading-a-map): Get operations, bulk reads, and queries
+- [Updating Maps](https://docs.hazelcast.com/hazelcast/latest/data-structures/updating-map-entries): Put, replace, and bulk update operations
+- [Map Listeners](https://docs.hazelcast.com/hazelcast/latest/data-structures/listening-for-map-entries): React to map entry events (add, update, remove)
+- [Entry Processor](https://docs.hazelcast.com/hazelcast/latest/data-structures/entry-processor): Execute operations atomically on map entries
+- [Map Backups](https://docs.hazelcast.com/hazelcast/latest/data-structures/backing-up-maps): Data safety with in-memory and disk backups
+- [Managing Map Memory](https://docs.hazelcast.com/hazelcast/latest/data-structures/managing-map-memory): Eviction and expiration policies
+- [Locking Maps](https://docs.hazelcast.com/hazelcast/latest/data-structures/locking-maps): Pessimistic and optimistic locking
+- [Queue](https://docs.hazelcast.com/hazelcast/latest/data-structures/queue): Distributed FIFO queue
+- [List](https://docs.hazelcast.com/hazelcast/latest/data-structures/list): Distributed list collection
+- [Set](https://docs.hazelcast.com/hazelcast/latest/data-structures/set): Distributed set with unique elements
+- [Replicated Map](https://docs.hazelcast.com/hazelcast/latest/data-structures/replicated-map): Fully replicated map for read-heavy workloads
+- [Topic](https://docs.hazelcast.com/hazelcast/latest/data-structures/topic): Publish-subscribe messaging
+- [Reliable Topic](https://docs.hazelcast.com/hazelcast/latest/data-structures/reliable-topic): Durable pub-sub with ringbuffer backing
+
+## SQL and Querying
+
+- [SQL Overview](https://docs.hazelcast.com/hazelcast/latest/sql/sql-overview): Distributed SQL queries on maps and external data
+- [Querying Maps with SQL](https://docs.hazelcast.com/hazelcast/latest/sql/querying-maps-sql): SQL syntax for querying IMap data
+- [SQL Data Types](https://docs.hazelcast.com/hazelcast/latest/sql/data-types): Supported SQL data types and Java mappings
+- [SQL Functions and Operators](https://docs.hazelcast.com/hazelcast/latest/sql/functions-and-operators): Complete SQL function reference
+- [Get Started with SQL](https://docs.hazelcast.com/hazelcast/latest/sql/get-started-sql): SQL tutorial for querying maps
+- [CREATE MAPPING](https://docs.hazelcast.com/hazelcast/latest/sql/create-mapping): Map data sources to SQL tables
+- [CREATE DATA CONNECTION](https://docs.hazelcast.com/hazelcast/latest/sql/create-data-connection): Define connections to external systems
+- [CREATE JOB](https://docs.hazelcast.com/hazelcast/latest/sql/create-job): Submit streaming SQL jobs
+- [Predicates API](https://docs.hazelcast.com/hazelcast/latest/query/predicate-overview): Programmatic querying as alternative to SQL
+- [Indexing Maps](https://docs.hazelcast.com/hazelcast/latest/query/indexing-maps): Create indexes to improve query performance
+- [Query Overview](https://docs.hazelcast.com/hazelcast/latest/query/overview): Comparison of SQL vs Predicates API
+
+## Stream Processing (Jet)
+
+- [Pipeline Overview](https://docs.hazelcast.com/hazelcast/latest/pipelines/overview): Build real-time and batch data pipelines
+- [Building Pipelines](https://docs.hazelcast.com/hazelcast/latest/pipelines/building-pipelines): Create streaming and batch pipelines
+- [Stream Processing Tutorial (Client/Server)](https://docs.hazelcast.com/hazelcast/latest/pipelines/stream-processing-client): Get started with Jet in client/server mode
+- [Stream Processing Tutorial (Embedded)](https://docs.hazelcast.com/hazelcast/latest/pipelines/stream-processing-embedded): Get started with embedded Jet
+- [Ingesting from Sources](https://docs.hazelcast.com/hazelcast/latest/pipelines/ingesting-from-sources): Read data from various sources
+- [Sending to Sinks](https://docs.hazelcast.com/hazelcast/latest/pipelines/sending-data-to-sinks): Write results to destinations
+- [Transforms](https://docs.hazelcast.com/hazelcast/latest/pipelines/transforms): Filter, map, and aggregate data in pipelines
+- [Windowing](https://docs.hazelcast.com/hazelcast/latest/pipelines/windowing): Apply windowed aggregations on streams
+- [Submitting Jobs](https://docs.hazelcast.com/hazelcast/latest/pipelines/submitting-jobs): Deploy pipelines as jobs to cluster
+- [Managing Jobs](https://docs.hazelcast.com/hazelcast/latest/pipelines/job-management): List, cancel, suspend, and resume jobs
+- [Monitoring Jobs](https://docs.hazelcast.com/hazelcast/latest/pipelines/job-monitoring): Track job status and metrics
+- [Configuring Jobs](https://docs.hazelcast.com/hazelcast/latest/pipelines/configuring-jobs): Job configuration options
+- [Change Data Capture (CDC)](https://docs.hazelcast.com/hazelcast/latest/pipelines/cdc-overview): Stream database changes with Debezium
+- [CDC from MySQL](https://docs.hazelcast.com/hazelcast/latest/pipelines/cdc): Capture changes from MySQL databases
+- [CDC from PostgreSQL](https://docs.hazelcast.com/hazelcast/latest/pipelines/cdc-postgres): Capture changes from PostgreSQL
+- [Map-Join Enrichment](https://docs.hazelcast.com/hazelcast/latest/pipelines/map-join): Enrich streams with map lookups
+
+## Connectors
+
+- [Connector Overview](https://docs.hazelcast.com/hazelcast/latest/integrate/connectors): Built-in sources and sinks
+- [Kafka Connector](https://docs.hazelcast.com/hazelcast/latest/integrate/kafka-connector): Stream to/from Apache Kafka
+- [Unified File Connector](https://docs.hazelcast.com/hazelcast/latest/integrate/file-connector): Read from S3, GCS, Azure, HDFS, local files
+- [JDBC Connector](https://docs.hazelcast.com/hazelcast/latest/integrate/jdbc-connector): Connect to relational databases
+- [MongoDB Connector](https://docs.hazelcast.com/hazelcast/latest/integrate/mongodb-connector): Read from and write to MongoDB
+- [Elasticsearch Connector](https://docs.hazelcast.com/hazelcast/latest/integrate/elasticsearch-connector): Index data in Elasticsearch
+- [Kafka Connect Connectors](https://docs.hazelcast.com/hazelcast/latest/integrate/kafka-connect-connectors): Use Kafka Connect sources without Kafka
+- [CDC Connectors](https://docs.hazelcast.com/hazelcast/latest/integrate/cdc-connectors): Change data capture from databases
+- [Data Connections](https://docs.hazelcast.com/hazelcast/latest/data-connections/data-connections-configuration): Reusable connection configurations
+
+## MapStore and External Data
+
+- [MapStore Overview](https://docs.hazelcast.com/hazelcast/latest/mapstore/working-with-external-data): Build a cache with database backing
+- [Implementing MapStore](https://docs.hazelcast.com/hazelcast/latest/mapstore/implement-a-mapstore): Custom MapStore/MapLoader implementation
+- [Configuring MapStore](https://docs.hazelcast.com/hazelcast/latest/mapstore/configuration-guide): MapStore configuration options
+- [Generic MapLoader](https://docs.hazelcast.com/hazelcast/latest/mapstore/configuring-a-generic-maploader): Pre-built MapLoader for databases
+- [Generic MapStore](https://docs.hazelcast.com/hazelcast/latest/mapstore/configuring-a-generic-mapstore): Pre-built MapStore for read-through/write-through
+
+## Deployment
+
+- [Choosing a Topology](https://docs.hazelcast.com/hazelcast/latest/deploy/choosing-a-deployment-option): Embedded vs client/server architecture
+- [Docker Deployment](https://docs.hazelcast.com/hazelcast/latest/deploy/deploying-with-docker): Deploy containers on Docker hosts
+- [Kubernetes with Operator](https://docs.hazelcast.com/operator/latest/): Production Kubernetes deployment
+- [Kubernetes with Helm](https://docs.hazelcast.com/hazelcast/latest/kubernetes/helm-hazelcast-chart): Deploy with Helm charts (Community)
+- [Kubernetes Enterprise Helm](https://docs.hazelcast.com/hazelcast/latest/kubernetes/helm-hazelcast-enterprise-chart): Deploy Enterprise with Helm
+- [Kubernetes Auto-Discovery](https://docs.hazelcast.com/hazelcast/latest/kubernetes/kubernetes-auto-discovery): Configure K8s discovery
+- [AWS Deployment](https://docs.hazelcast.com/hazelcast/latest/deploy/deploying-on-aws): Deploy on Amazon EC2 and ECS
+- [Azure Deployment](https://docs.hazelcast.com/hazelcast/latest/deploy/deploying-on-azure): Deploy on Microsoft Azure
+- [GCP Deployment](https://docs.hazelcast.com/hazelcast/latest/deploy/deploying-on-gcp): Deploy on Google Cloud Platform
+- [Version Compatibility](https://docs.hazelcast.com/hazelcast/latest/deploy/versioning-compatibility): Supported JVMs and version matrix
+
+## Client APIs
+
+- [Java Client](https://docs.hazelcast.com/hazelcast/latest/clients/java): Java client for member clusters
+- [Java Client Tutorial](https://docs.hazelcast.com/hazelcast/latest/clients/java-client-getting-started): Get started with Java client
+- [Python Client](https://docs.hazelcast.com/hazelcast-python-client/latest/): Python SDK documentation
+- [Python Client Tutorial](https://docs.hazelcast.com/hazelcast/latest/clients/python-client-getting-started): Get started with Python client
+- [.NET Client](https://docs.hazelcast.com/hazelcast-csharp-client/latest/): C# client documentation
+- [.NET Client Tutorial](https://docs.hazelcast.com/hazelcast/latest/clients/csharp-client-getting-started): Get started with .NET client
+- [Node.js Client](https://docs.hazelcast.com/hazelcast-nodejs-client/latest/): JavaScript/TypeScript client
+- [Node.js Client Tutorial](https://docs.hazelcast.com/hazelcast/latest/clients/nodejs-client-getting-started): Get started with Node.js client
+- [Go Client](https://docs.hazelcast.com/hazelcast-go-client/latest/): Go language client
+- [Go Client Tutorial](https://docs.hazelcast.com/hazelcast/latest/clients/go-client-getting-started): Get started with Go client
+- [C++ Client](https://docs.hazelcast.com/hazelcast/latest/clients/cplusplus): C++ client documentation
+- [C++ Client Tutorial](https://docs.hazelcast.com/hazelcast/latest/clients/cpp-client-getting-started): Get started with C++ client
+- [REST Client](https://docs.hazelcast.com/hazelcast/latest/clients/rest): RESTful HTTP API
+
+## Configuration
+
+- [Understanding Configuration](https://docs.hazelcast.com/hazelcast/latest/configuration/understanding-configuration): Static vs dynamic configuration
+- [Declarative Configuration](https://docs.hazelcast.com/hazelcast/latest/configuration/configuring-declaratively): XML and YAML configuration files
+- [Programmatic Configuration](https://docs.hazelcast.com/hazelcast/latest/configuration/configuring-programmatically): Java configuration API
+- [System Properties](https://docs.hazelcast.com/hazelcast/latest/configuration/configuring-with-system-properties): Configure with environment variables
+- [Dynamic Configuration](https://docs.hazelcast.com/hazelcast/latest/configuration/dynamic-config): Add configuration at runtime
+- [JVM Parameters](https://docs.hazelcast.com/hazelcast/latest/configuration/jvm-parameters): Recommended JVM settings
+- [Network Configuration](https://docs.hazelcast.com/hazelcast/latest/clusters/network-configuration): Configure networking and ports
+- [Jet Engine Configuration](https://docs.hazelcast.com/hazelcast/latest/configuration/jet-configuration): Configure stream processing engine
+
+## Enterprise Features
+
+- [CP Subsystem](https://docs.hazelcast.com/hazelcast/latest/cp-subsystem/cp-subsystem): Strongly consistent distributed data structures (Enterprise)
+- [CP Configuration](https://docs.hazelcast.com/hazelcast/latest/cp-subsystem/configuration): Configure CP Subsystem (Enterprise)
+- [CP Management](https://docs.hazelcast.com/hazelcast/latest/cp-subsystem/management): Manage CP groups and members (Enterprise)
+- [WAN Replication](https://docs.hazelcast.com/hazelcast/latest/wan/wan): Replicate data across geographically distributed clusters (Enterprise)
+- [Security Overview](https://docs.hazelcast.com/hazelcast/latest/security/overview): Authentication, authorization, and encryption (Enterprise)
+- [TLS/SSL](https://docs.hazelcast.com/hazelcast/latest/security/tls-ssl): Configure TLS encryption (Enterprise)
+- [Authentication](https://docs.hazelcast.com/hazelcast/latest/security/authentication-overview): JAAS, LDAP, Kerberos, simple auth (Enterprise)
+- [Vector Search](https://docs.hazelcast.com/hazelcast/latest/data-structures/vector-search-overview): AI/ML vector similarity search (Enterprise Beta)
+- [Vector Collections](https://docs.hazelcast.com/hazelcast/latest/data-structures/vector-collections): Store and query vectors (Enterprise Beta)
+- [Vector Search Tutorial](https://docs.hazelcast.com/hazelcast/latest/data-structures/vector-search-tutorial): Image search with vectors (Enterprise Beta)
+- [Persistence](https://docs.hazelcast.com/hazelcast/latest/storage/persistence): Disk-based durability and recovery (Enterprise)
+- [High-Density Memory](https://docs.hazelcast.com/hazelcast/latest/storage/high-density-memory): Off-heap memory optimization (Enterprise)
+- [User Code Namespaces](https://docs.hazelcast.com/hazelcast/latest/clusters/user-code-namespaces): Deploy custom code dynamically (Enterprise)
+- [Hot Restart](https://docs.hazelcast.com/hazelcast/latest/storage/persistence): Fast cluster restart with data (Enterprise)
+
+## Operations and Monitoring
+
+- [Management Center](https://docs.hazelcast.com/management-center/latest/): Web-based cluster management and monitoring
+- [Monitoring Overview](https://docs.hazelcast.com/hazelcast/latest/maintain-cluster/monitoring): Metrics, diagnostics, and health checks
+- [Cluster States](https://docs.hazelcast.com/hazelcast/latest/maintain-cluster/cluster-member-states): Manage cluster lifecycle and state
+- [Rolling Upgrades](https://docs.hazelcast.com/hazelcast/latest/maintain-cluster/rolling-upgrades): Zero-downtime version upgrades
+- [Shutting Down](https://docs.hazelcast.com/hazelcast/latest/maintain-cluster/shutdown): Graceful and forceful shutdown
+- [Logging](https://docs.hazelcast.com/hazelcast/latest/maintain-cluster/logging): Configure logging frameworks
+- [REST API](https://docs.hazelcast.com/hazelcast/latest/maintain-cluster/rest-api): RESTful management operations
+- [Metrics List](https://docs.hazelcast.com/hazelcast/latest/list-of-metrics): Complete metrics reference
+- [Phone Home](https://docs.hazelcast.com/hazelcast/latest/phone-homes): Usage data collection
+
+## Performance and Tuning
+
+- [Performance Tips](https://docs.hazelcast.com/hazelcast/latest/cluster-performance/performance-tips): Production checklist and optimization
+- [Threading](https://docs.hazelcast.com/hazelcast/latest/cluster-performance/threading): Thread pools and execution
+- [Thread-Per-Core (TPC)](https://docs.hazelcast.com/hazelcast/latest/cluster-performance/thread-per-core-tpc): Enable TPC for higher throughput
+- [Near Cache](https://docs.hazelcast.com/hazelcast/latest/cluster-performance/near-cache): Client-side caching for reduced latency
+- [Data Affinity](https://docs.hazelcast.com/hazelcast/latest/cluster-performance/data-affinity): Colocate related data
+- [Pipelining](https://docs.hazelcast.com/hazelcast/latest/cluster-performance/pipelining): Batch operations for better throughput
+- [Capacity Planning](https://docs.hazelcast.com/hazelcast/latest/capacity-planning): Estimate cluster capacity
+- [Caching Deserialized Values](https://docs.hazelcast.com/hazelcast/latest/performance/caching-deserialized-values): Improve performance by caching objects
+
+## Serialization
+
+- [Serialization Overview](https://docs.hazelcast.com/hazelcast/latest/serialization/serialization): How Hazelcast serializes data
+- [Compact Serialization](https://docs.hazelcast.com/hazelcast/latest/serialization/compact-serialization): Schema evolution without restarts
+- [Portable Serialization](https://docs.hazelcast.com/hazelcast/latest/serialization/implementing-portable-serialization): Cross-platform serialization
+- [IdentifiedDataSerializable](https://docs.hazelcast.com/hazelcast/latest/serialization/implementing-identifieddataserializable): Fast Java serialization
+- [Custom Serialization](https://docs.hazelcast.com/hazelcast/latest/serialization/custom-serialization): Build custom serializers
+- [JSON Serialization](https://docs.hazelcast.com/hazelcast/latest/serialization/serializing-json): Query JSON data with SQL
+- [Serialization Config](https://docs.hazelcast.com/hazelcast/latest/serialization/serialization-configuration): Configure serializers
+
+## Fault Tolerance
+
+- [Fault Tolerance Overview](https://docs.hazelcast.com/hazelcast/latest/fault-tolerance/fault-tolerance): Handling member failures
+- [Backups](https://docs.hazelcast.com/hazelcast/latest/fault-tolerance/backups): Synchronous and asynchronous backups
+- [Split-Brain Protection](https://docs.hazelcast.com/hazelcast/latest/network-partitioning/split-brain-protection): Prevent split-brain with quorum
+- [Split-Brain Recovery](https://docs.hazelcast.com/hazelcast/latest/network-partitioning/split-brain-recovery): Merge strategies after partition
+- [Network Partitioning](https://docs.hazelcast.com/hazelcast/latest/network-partitioning/network-partitioning): Handle network failures
+
+## Spring Integration
+
+- [Spring Overview](https://docs.hazelcast.com/hazelcast/latest/spring/overview): Integrate Hazelcast with Spring
+- [Spring Configuration](https://docs.hazelcast.com/hazelcast/latest/spring/configuration): Configure Hazelcast in Spring
+- [Spring Caching](https://docs.hazelcast.com/hazelcast/latest/spring/add-caching): Use Hazelcast as Spring cache provider
+- [Spring Session](https://docs.hazelcast.com/hazelcast/latest/spring/spring-session-guide): Distribute HTTP sessions with Spring
+- [Spring Boot](https://docs.hazelcast.com/hazelcast/latest/integrate/spring-boot-tutorial): Hazelcast with Spring Boot
+
+## Migration and Upgrades
+
+- [Upgrading from IMDG 3.x](https://docs.hazelcast.com/hazelcast/latest/migrate/upgrading-from-imdg-3): Migration guide from 3.12
+- [Upgrading from IMDG 4.x](https://docs.hazelcast.com/hazelcast/latest/migrate/upgrading-from-imdg-4): Migration guide from 4.x
+- [Upgrading from Jet](https://docs.hazelcast.com/hazelcast/latest/migrate/upgrading-from-jet): Migrate from standalone Jet
+- [Data Migration Tool](https://docs.hazelcast.com/hazelcast/latest/migrate/data-migration-tool): Migrate data between clusters
+- [Community to Enterprise](https://docs.hazelcast.com/hazelcast/latest/migrate/community-to-enterprise): Upgrade to Enterprise Edition
+
+## Hazelcast Cloud
+
+- [Cloud Overview](https://docs.hazelcast.com/cloud/overview): Managed Hazelcast in the cloud
+- [Cloud Getting Started](https://docs.hazelcast.com/cloud/get-started): Create your first cloud cluster
+- [Cloud Standard Clusters](https://docs.hazelcast.com/cloud/serverless-cluster): Serverless, auto-scaling clusters
+- [Cloud Dedicated Clusters](https://docs.hazelcast.com/cloud/dedicated-cluster): Dedicated infrastructure
+- [Connecting to Cloud](https://docs.hazelcast.com/cloud/connect-to-cluster): Connect clients to cloud clusters
+- [Cloud Connector Wizard](https://docs.hazelcast.com/cloud/connector-wizard): Simplified data source connections
+- [Cloud SQL Browser](https://docs.hazelcast.com/cloud/execute-sql-queries): Run SQL queries in browser
+
+## Command Line Tools
+
+- [Hazelcast CLC Overview](https://docs.hazelcast.com/clc/latest/overview): Command-line client for clusters
+- [Installing CLC](https://docs.hazelcast.com/clc/latest/install-clc): Install on macOS, Linux, Windows
+- [CLC Getting Started](https://docs.hazelcast.com/clc/latest/get-started): Connect and manage clusters from CLI
+- [CLC Commands](https://docs.hazelcast.com/clc/latest/clc-commands): Complete command reference
+- [CLC SQL](https://docs.hazelcast.com/clc/latest/clc-sql): Execute SQL from command line
+
+## Reference
+
+- [API Documentation](https://docs.hazelcast.org/docs/latest/javadoc/): Complete Java API reference
+- [System Properties](https://docs.hazelcast.com/hazelcast/latest/system-properties): All system properties
+- [Glossary](https://docs.hazelcast.com/hazelcast/latest/glossary): Key terms and definitions
+- [FAQ](https://docs.hazelcast.com/hazelcast/latest/faq): Frequently asked questions
+- [Release Notes](https://docs.hazelcast.com/hazelcast/latest/release-notes/releases): Latest changes and features
+- [What's New](https://docs.hazelcast.com/hazelcast/latest/whats-new): Highlights of new features
+
+## Optional
+
+- [GitHub Repository](https://github.com/hazelcast/hazelcast): Source code, issues, and contributions
+- [Community Slack](https://slack.hazelcast.com/): Get help from the community
+- [Hazelcast Blog](https://hazelcast.com/blog/): Technical articles and announcements
+- [Support](https://docs.hazelcast.com/hazelcast/latest/getting-started/support): Community and enterprise support options
+- [Tutorials](https://docs.hazelcast.com/tutorials/): Hands-on learning guides
+- [Code Samples](https://github.com/hazelcast/hazelcast-code-samples): Example applications

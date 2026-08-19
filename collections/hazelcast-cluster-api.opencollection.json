@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Hazelcast REST Cluster API",
+    "version": "latest"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Cluster",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get cluster info",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{host}:{port}/hazelcast/rest/cluster"
+          },
+          "docs": "Get cluster info"
+        },
+        {
+          "info": {
+            "name": "Get instance name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{host}:{port}/hazelcast/rest/instance"
+          },
+          "docs": "Get instance name"
+        },
+        {
+          "info": {
+            "name": "Get cluster state",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{host}:{port}/hazelcast/rest/management/cluster/state"
+          },
+          "docs": "Get cluster state"
+        },
+        {
+          "info": {
+            "name": "Change cluster state",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://{host}:{port}/hazelcast/rest/management/cluster/state"
+          },
+          "docs": "Change cluster state"
+        },
+        {
+          "info": {
+            "name": "Get cluster version",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://{host}:{port}/hazelcast/rest/management/cluster/version"
+          },
+          "docs": "Get cluster version"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
