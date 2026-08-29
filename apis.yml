@@ -5,6 +5,17 @@ description: >-
   integration, and distributed computing. Hazelcast provides in-memory computing capabilities for high-performance,
   low-latency applications, exposing a REST API for managing maps, queues, cluster state, configuration, and health.
 type: Index
+deliveryModel:
+  model: unknown
+  open_source: false
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
