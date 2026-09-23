@@ -1,11 +1,7 @@
 {
   "provider": "hazelcast",
   "sources": [
-    "hazelcast-cluster-api-openapi.yml",
-    "hazelcast-configuration-api-openapi.yml",
-    "hazelcast-health-api-openapi.yml",
-    "hazelcast-maps-api-openapi.yml",
-    "hazelcast-queues-api-openapi.yml"
+    "_original/hazelcast-openapi.yml"
   ],
   "outputs": [
     "hazelcast-cluster-api-openapi.yml",
@@ -17,6 +13,16 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "hazelcast-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "hazelcast-cluster-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "hazelcast-configuration-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "hazelcast-health-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "hazelcast-maps-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "hazelcast-queues-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
