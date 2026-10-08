@@ -126,6 +126,12 @@ apis:
     url: >-
       https://raw.githubusercontent.com/api-evangelist/hazelcast/refs/heads/main/hazelcast-rules.yml
 common:
+  - type: Plans
+    url: plans/hazelcast-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/hazelcast-rate-limits.yml
+  - type: FinOps
+    url: finops/hazelcast-finops.yml
   - type: AgenticAccess
     url: agentic-access/hazelcast-agentic-access.yml
   - type: DomainSecurity
