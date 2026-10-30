@@ -1,4 +1,4 @@
-# Hazelcast (hazelcast)
+# Hazelcast
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,66 +66,125 @@
 
 Hazelcast is a real-time data platform that helps businesses accelerate their applications with data caching, data integration, and distributed computing. Hazelcast provides in-memory computing capabilities for high-performance, low-latency applications, exposing a REST API for managing maps, queues, cluster state, configuration, and health.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/hazelcast/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/hazelcast/refs/heads/main/apis.yml)
+**Areas:** Data Caching · Distributed Computing · In-Memory Computing · Real-Time · REST
 
-## Scope
+## Hazelcast on APIs.io
 
-- **Type:** Index
+Everything profiled for Hazelcast is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/hazelcast/](https://apis.io/providers/hazelcast/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (5)
 
-- Data Caching
-- Distributed Computing
-- In-Memory Computing
-- Real-Time
-- REST
+- [Hazelcast Cluster API](https://apis.io/apis/hazelcast/hazelcast-cluster-api/) — Cluster information and management endpoints.
+- [Hazelcast Configuration API](https://apis.io/apis/hazelcast/hazelcast-configuration-api/) — Runtime configuration management.
+- [Hazelcast Health API](https://apis.io/apis/hazelcast/hazelcast-health-api/) — Liveness and readiness checks.
+- [Hazelcast Maps API](https://apis.io/apis/hazelcast/hazelcast-maps-api/) — Distributed map operations under /hazelcast/rest/maps.
+- [Hazelcast Queues API](https://apis.io/apis/hazelcast/hazelcast-queues-api/) — Distributed queue operations under /hazelcast/rest/queues.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-08-19
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Hazelcast REST API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Hazelcast provides a REST API for interacting with the distributed data grid, supporting operations for maps, queues, cluster management, configuration reload, and health checks over HTTP.
+- [Hazelcast Agentic Access](https://apis.io/agentic-access/hazelcast/hazelcast-agentic-access/)
 
-- **Human URL:** [https://docs.hazelcast.com/hazelcast/latest/maintain-cluster/rest-api](https://docs.hazelcast.com/hazelcast/latest/maintain-cluster/rest-api)
-- **Base URL:** `http://localhost:5701/hazelcast/rest`
+#### Collections (6)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Distributed Computing
-- In-Memory Computing
-- REST
-- Maps
-- Queues
-- Cluster Management
+- [Hazelcast REST API](https://apis.io/collections/hazelcast/open-hazelcast/)
+- [Hazelcast REST Cluster API](https://apis.io/collections/hazelcast/open-hazelcast-cluster-api/)
+- [Hazelcast REST Cluster Configuration API](https://apis.io/collections/hazelcast/open-hazelcast-configuration-api/)
+- [Hazelcast REST Cluster Health API](https://apis.io/collections/hazelcast/open-hazelcast-health-api/)
+- [Hazelcast REST Cluster Maps API](https://apis.io/collections/hazelcast/open-hazelcast-maps-api/)
+- [Hazelcast REST Cluster Queues API](https://apis.io/collections/hazelcast/open-hazelcast-queues-api/)
 
-#### Properties
+#### Security (1)
 
-- [Documentation](https://docs.hazelcast.com/hazelcast/latest/maintain-cluster/rest-api)
-- [Getting Started](https://docs.hazelcast.com/hazelcast/latest/getting-started/get-started-docker)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/hazelcast/refs/heads/main/openapi/hazelcast-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Rules](https://raw.githubusercontent.com/api-evangelist/hazelcast/refs/heads/main/hazelcast-rules.yml)
-- [Postman Collection](collections/hazelcast.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/hazelcast.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Authentication, trust centre, and vulnerability disclosure.
 
-## Common Properties
+- [Hazelcast Domain Security](https://apis.io/security/hazelcast/hazelcast-domain-security/)
 
-- [LinkedIn](https://www.linkedin.com/company/hazelcast)
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Hazelcast Plans Pricing](https://apis.io/plans/hazelcast/hazelcast-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Hazelcast Rate Limits](https://apis.io/rate-limits/hazelcast/hazelcast-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Hazelcast Finops](https://apis.io/finops/hazelcast/hazelcast-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://hazelcast.com/)
 - [Documentation](https://docs.hazelcast.com/)
-- [Getting Started](https://docs.hazelcast.com/hazelcast/latest/getting-started/get-started-docker)
+- [Getting started](https://docs.hazelcast.com/hazelcast/latest/getting-started/get-started-docker)
 - [Support](https://hazelcast.com/support/)
 - [Blog](https://hazelcast.com/blog/)
-- [GitHub Organization](https://github.com/hazelcast)
-- [Community](https://slack.hazelcast.com/)
-- [Integrations](https://hazelcast.com/partners/)
-- [L L Ms Txt](https://docs.hazelcast.com/llms.txt)
+- [GitHub](https://github.com/hazelcast)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 22.2** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 36.7 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 28.6 |
+| Access clarity | 7.9 |
+
+**Agent readiness 15.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 5.9** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/hazelcast/](https://apis.io/providers/hazelcast/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Hazelcast: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/hazelcast/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
